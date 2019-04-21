@@ -4,7 +4,7 @@ steps:
   args:
   - sed
   - -i
-  - 's#git@github.com:rohenaz/\(.*\)\.git#https://source.developers.google.com/p/elevated-legacy-182015/r/github-rohenaz-\1#g'
+  - 's#git@github.com:rohenaz/\(.*\)\.git#https://source.developers.google.com/p/bitcoinsv/r/github-rohenaz-\1#g'
   - .gitmodules
 - name: debian
   args:
