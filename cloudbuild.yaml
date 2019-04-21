@@ -1,24 +1,6 @@
 #cloudbuild.yaml
 steps:
 - name: debian
-  args:
-  - sed
-  - -i
-  - 's#{{SITE_VERSION}}#$TAG_NAME$SHORT_SHA#g'
-  - Dockerfile
-- name: debian
-  args:
-  - sed
-  - -i
-  - 's#{{CI_COMMIT_ID}}#${SHORT_SHA}#g'
-  - Dockerfile
-- name: debian
-  args:
-  - sed
-  - -i
-  - 's#{{BRANCH_NAME}}#$_BUILD_ENV#g'
-  - Dockerfile
-- name: debian
   volumes:
   - name: 'bitcoinsv'
     path: '/bitcoinsv'
