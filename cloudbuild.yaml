@@ -1,0 +1,25 @@
+version: '3.5'
+services:
+  bitcoin:
+    build:
+      context: ./bitcoin/
+      dockerfile: Dockerfile-bitcoin
+    container_name: bitcoin-server
+    image: bitcoin:latest
+    stdin_open: true
+    ports:
+      - "8333:8333"
+      - "8332:8332"
+    networks:
+      - planaria
+    volumes:
+      - type: volume
+        source: bitcoinsv
+        target: /bitcoinsv
+
+volumes:
+  bitcoinsv:
+
+networks:
+  planaria:
+    name: planaria
