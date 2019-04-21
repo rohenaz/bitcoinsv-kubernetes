@@ -1,25 +1,42 @@
-version: '3.5'
-services:
-  bitcoin:
-    build:
-      context: ./bitcoin/
-      dockerfile: Dockerfile-bitcoin
-    container_name: bitcoin-server
-    image: bitcoin:latest
-    stdin_open: true
-    ports:
-      - "8333:8333"
-      - "8332:8332"
-    networks:
-      - planaria
-    volumes:
-      - type: volume
-        source: bitcoinsv
-        target: /bitcoinsv
-
-volumes:
-  bitcoinsv:
-
-networks:
-  planaria:
-    name: planaria
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  namespace: default
+  labels:
+    service: bitcoin
+  name: bitcoin
+spec:
+  strategy:
+    type: Recreate
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        service: bitcoin
+    spec:
+      containers:
+      - env:
+        - name: BITCOIN_RPC_USER
+          valueFrom:
+            secretKeyRef:
+              name: bitcoin
+              key: rpcuser
+        - name: BITCOIN_RPC_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: bitcoin
+              key: rpcpass
+        image: gcr.io/bitcoinsv/github-rohenaz-bitcoinsv:c0e64862ade7346cd59c22dfe1c199110e062892
+        name: bitcoin
+        volumeMounts:
+          - mountPath: /bitcoinsv
+            name: bitcoinsv
+        resources:
+          requests:
+            memory: "2Gi"
+      restartPolicy: Always
+      volumes:
+        - name: bitcoinsv
+          gcePersistentDisk:
+            pdName: bitcoinsv
+            fsType: ext4
