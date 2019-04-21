@@ -1,1 +1,1 @@
-bitcoin: bitcoinsv
+worker: bitcoinsv
