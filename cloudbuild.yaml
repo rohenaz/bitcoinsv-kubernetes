@@ -18,6 +18,15 @@ steps:
   - -i
   - 's#{{BRANCH_NAME}}#$_BUILD_ENV#g'
   - Dockerfile
+- name: debian
+  volumes:
+  - name: 'bitcoinsv'
+    path: '/bitcoinsv'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+        echo "Hello, world!" > /bitcoinsv/file
 - name: 'gcr.io/cloud-builders/docker'
   entrypoint: '/bin/bash'
   args: [ '-c',
