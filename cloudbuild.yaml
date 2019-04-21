@@ -18,11 +18,6 @@ steps:
   - -i
   - 's#{{BRANCH_NAME}}#$_BUILD_ENV#g'
   - Dockerfile
-- name: debian
-  args: ['build', '-t', 'gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA', '.']
-  volumes:   
-  - name: 'bitcoinsv'
-    path: '/bitcoinsv'
 - name: 'gcr.io/cloud-builders/docker'
   entrypoint: '/bin/bash'
   args: [ '-c',
