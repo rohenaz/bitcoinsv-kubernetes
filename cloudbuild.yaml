@@ -4,12 +4,6 @@ steps:
   args:
   - sed
   - -i
-  - 's#git@github.com:rohenaz/\(.*\)\.git#https://source.developers.google.com/p/bitcoinsv/r/github-rohenaz-\1#g'
-  - .gitmodules
-- name: debian
-  args:
-  - sed
-  - -i
   - 's#{{SITE_VERSION}}#$TAG_NAME$SHORT_SHA#g'
   - Dockerfile
 - name: debian
