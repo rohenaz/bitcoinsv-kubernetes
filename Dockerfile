@@ -25,7 +25,7 @@ ADD ./bin /usr/local/bin
 RUN chmod +x /usr/local/bin/bsv_oneshot
 
 # Set the volume (from previous step)
-VOLUME ["/bitcoinsv"]
+# VOLUME ["/bitcoinsv"]
 
 # Expose the ports for use
 EXPOSE 8332 8333
