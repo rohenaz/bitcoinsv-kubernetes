@@ -37,10 +37,10 @@ WORKDIR /bitcoinsv
 RUN mkdir -p /bitcoinsv/.bitcoin
 
 # Copy the configuration into the volume
-COPY bitcoin.conf /.bitcoin/bitcoin.conf
+COPY bitcoin.conf ./
 
 # Copy and set the entrypoint
-COPY /entrypoint.sh /usr/local/bin/
+COPY entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/entrypoint.sh
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
