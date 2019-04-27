@@ -31,7 +31,7 @@ RUN chmod +x /usr/local/bin/bsv_oneshot
 EXPOSE 8332 8333
 
 # Set the working directory
-WORKDIR /bitcoinsv
+# WORKDIR /bitcoinsv
 
 # make the config dir
 RUN mkdir -p /bitcoinsv/.bitcoin
