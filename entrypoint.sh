@@ -1,4 +1,5 @@
 #!/bin/sh
+
 set -e
 
 # first arg is `-f` or `--some-option`
@@ -13,7 +14,12 @@ if [ "$1" = 'bsv_oneshot' -a "$(id -u)" = '0' ]; then
 	exec gosu bitcoinsv "$0" "$@"
 fi
 
+pwd
+
+la -al
+
 cd /bitcoinsv/.bitcoin/
+
 ls -al
 
 exec "$@"
