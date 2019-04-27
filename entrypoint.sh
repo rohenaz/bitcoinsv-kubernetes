@@ -16,7 +16,7 @@ fi
 
 pwd
 
-la -al
+ls -al
 
 cd /bitcoinsv/.bitcoin/
 
