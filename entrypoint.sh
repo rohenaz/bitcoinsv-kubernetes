@@ -24,8 +24,4 @@ cd /bitcoinsv/.bitcoin
 
 ls -al
 
-cd /bitcoinsv/.bitcoin/
-
-ls -al
-
 exec "$@"
