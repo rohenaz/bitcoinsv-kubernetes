@@ -37,7 +37,7 @@ EXPOSE 8332 8333
 # RUN mkdir -p /bitcoinsv/.bitcoin
 
 # Copy the configuration into the volume
-COPY . .
+COPY bitcoin.conf .
 
 # Copy and set the entrypoint
 COPY entrypoint.sh /usr/local/bin/
