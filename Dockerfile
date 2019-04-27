@@ -34,7 +34,7 @@ EXPOSE 8332 8333
 # WORKDIR /bitcoinsv
 
 # make the config dir
-# RUN mkdir -p /bitcoinsv/.bitcoin
+RUN mkdir -p /bitcoinsv/.bitcoin
 
 # Copy the configuration into the volume
 COPY bitcoin.conf .
