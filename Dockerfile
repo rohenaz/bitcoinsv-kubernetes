@@ -25,7 +25,7 @@ ADD ./bin /usr/local/bin
 RUN chmod +x /usr/local/bin/bsv_oneshot
 
 # Set the volume (from previous step)
-VOLUME ["/bitcoinsv"]
+# VOLUME ["/bitcoinsv"]
 
 # Expose the ports for use
 EXPOSE 8332 8333
@@ -34,13 +34,13 @@ EXPOSE 8332 8333
 WORKDIR /bitcoinsv
 
 # make the config dir
-RUN mkdir -p /bitcoinsv/.bitcoin
+# RUN mkdir -p /bitcoinsv/.bitcoin
 
 # Copy the configuration into the volume
-COPY bitcoin.conf /bitcoinsv/.bitcoin/bitcoin.conf
+COPY .bitcoin .bitcoin
 
 # Copy and set the entrypoint
-COPY /entrypoint.sh /usr/local/bin/
+COPY entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/entrypoint.sh
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 

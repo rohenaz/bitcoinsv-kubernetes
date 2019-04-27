@@ -13,4 +13,7 @@ if [ "$1" = 'bsv_oneshot' -a "$(id -u)" = '0' ]; then
 	exec gosu bitcoinsv "$0" "$@"
 fi
 
+cd /bitcoinsv/.bitcoin/
+ls -al
+
 exec "$@"
