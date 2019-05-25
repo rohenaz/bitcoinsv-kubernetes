@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+  bitcoin:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: bitcoin-server
+    image: bitcoin:latest
+    stdin_open: true
+    ports:
+      - "8333:8333"
+      - "8332:8332"
+    volumes:
+      - bitcoinsv:/bitcoinsv
+
+volumes:
+  bitcoinsv:
